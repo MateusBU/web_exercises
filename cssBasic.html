@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>CSS</title>
+        <style>
+            h1{
+                font-size: 20px;
+            }
+            .backgroundRed{
+                background-color: red;
+            }
+            .bold{
+                font-weight: bold;
+            }
+            #mainText{
+                font-size: 40px;
+                font-weight: bold;
+                color: white;
+                background-color: #444;
+                padding: 10px;
+                margin-bottom: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CSS</h1>
+        <span id="mainText"> Text 1</span> <br> <br> <br><!--br new line-->
+        <span class="backgroundRed bold"> Text 2</span> <br><br>
+        <span class="backgroundRed" wm-atrib> Text 3</span>
+    </body>
+</html>
+
+<!--
+get the class with background red
+document.querySelector('.backgroundRed')
+<span class=​"backgroundRed bold">​ Text 2​</span>​
+
+get all
+document.querySelectorAll('.backgroundRed')
+<span class=​"backgroundRed bold">​ Text 2​</span>​
+
+get by id
+
+document.querySelector('#mainText')
+<span id=​"mainText">​ Text 1​</span>​
+
+wb-atrib personally atribute
+
+get by personally atribute
+document.querySelector('[wm-atrib]')
+-->
