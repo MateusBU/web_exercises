@@ -12,8 +12,8 @@
         </h1>
     </header>  
     <nav>
-        <a href="exercises/test.html">01 - Teste</a> <!--it loads a new page-->
-        <a href="exercises/test2.html">02 - Teste</a> 
+        <a href  wm-nav="exercises/test.html">01 - Teste</a> <!--it loads a new page-->
+        <a href  wm-nav="exercises/test2.html">02 - Teste</a> 
     </nav>  
     <section id="content"></section>
     <footer>
@@ -22,14 +22,14 @@
 
     <script>
         //select all tags
-        document.querySelectorAll('a').forEach(link =>{ //get all link using forEach
+        document.querySelectorAll('[wm-nav]').forEach(link =>{ //get all link using forEach
             console.log(link)
             const content = document.getElementById('content');
 
             link.onclick = function(e){
                 e.preventDefault()
                 //console.log("callback when we click")
-                fetch(link.href)
+                fetch(link.getAttribute('wm-nav'))
                     .then(resp => resp.text())
                     .then(html => content.innerHTML = html); 
                     //Ajax call
