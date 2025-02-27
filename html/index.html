@@ -20,6 +20,8 @@
         <a href  wm-nav="exercises/test.html">01 - Text</a> <!--it loads a new page-->
         <a href  wm-nav="exercises/text2.html">02 - Text</a> 
         <a href  wm-nav="exercises/text3.html">03 - Text</a> 
+        <a href  wm-nav="exercises/lists.html">01 - Lists</a> 
+        <a href  wm-nav="exercises/lists2.html">02 - Lists</a> 
     </nav>  
     <section id="content"></section>
     <footer>
@@ -36,11 +38,27 @@
                 e.preventDefault()
                 //console.log("callback when we click")
                 fetch(link.getAttribute('wm-nav'))
-                    .then(resp => resp.text())
-                    .then(html => content.innerHTML = html); 
-                    //Ajax call
-                    //get when the result of the promise is resolved
-                    //get the content of other file and load it in this page
+                .then(resp => resp.text())
+                .then(html => {content.innerHTML = html;
+                //Ajax call
+                //get when the result of the promise is resolved
+                //get the content of other file and load it in this page
+
+                    // Manually execute scripts from loaded HTML
+                    const scripts = content.querySelectorAll('script');
+                    console.log(scripts);
+                    scripts.forEach(oldScript =>{
+                        const newScript = document.createElement('script');
+                        if(oldScript.src){
+                            newScript.src = oldScript.src;
+                            newScript.async  =false;
+                        }
+                        else{
+                            newScript.textContent = oldScript.textContent;
+                        }
+                        oldScript.parentNode.appendChild(newScript);
+                    });
+                }); 
             }
             //LOAD WITHOU EXIT THE PAGE  
         });
