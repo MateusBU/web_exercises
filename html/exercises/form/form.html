@@ -7,14 +7,44 @@
     <input type="password" name="passworduser">
     <textarea name="bio" cols="60" rows="10"></textarea>
     <div>
-        
+        <input type="radio" name="type" value="admin">Admin
+        <input type="radio" name="type" value="regular">Regular
+        <input type="radio" name="type" value="professor">Professor
     </div>
+    <div>
+        <input type="checkbox" name="active" id="">Active
+    </div>
+
+    <select name="state">
+        <option value="">Select</option>
+        <option value="AC">Acre</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceara</option>
+    </select>
+
+    <select name="interests" multiple size="5">
+        <option value="js">Javascript</option>
+        <option value="java">Java</option>
+        <option value="C">C</option>
+        <option value="Python">Python</option>
+        <option value="go">GO</option>
+        <option value="C++">C++</option>
+    </select>
+
     <button>Include</button>
 </form>
 
 <style>
-    input, textarea{
+    input, 
+    textarea,
+    select{
         display: block; /*one element each line*/
         margin-bottom: 10px;
+    }
+    input[type=radio]{
+        display: inline;
+    }
+    input[type=checkbox]{
+        display: inline;
     }
 </style>
