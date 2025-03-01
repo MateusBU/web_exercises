@@ -1,19 +1,19 @@
 <h1>Project</h1>    
 <ul class="tree">
     <li>
-        <button onclick="toggleList(this)">Backend</button>
-        <ul style="display: block;">
+        <span html-folder>Backend</span>
+        <ul>
             <li>
-                <button onclick="toggleList(this)">app</button>
-                <ul style="display: block;">
+                <span html-folder>app</span>
+                <ul>
                     <li>product.js</li>
                     <li>user.js</li>
                     <li>sale.js</li>
                 </ul>
             </li>
             <li>
-                <button onclick="toggleList(this)">config</button>
-                <ul style="display: block;">
+                <span html-folder>config</span>
+                <ul>
                     <li>DB.js</li>
                     <li>routes.js</li>
                     <li>server.js</li>
@@ -22,11 +22,10 @@
         </uL>
     </li>
     <li>
-        <button onclick="toggleList(this)">Frontend</button>
-        <ul style="display: block;">
+        <span html-folder>Frontend</span>
+        <ul>
             <li>
-                <button onclick="toggleList(this)">public</button>
-                <ul style="display: block;">
+                <span html-folder>public</span>
                 <ul>
                     <li>app.css</li>
                     <li>app.js</li>
@@ -38,24 +37,14 @@
 </ul>
 
 <link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
-<style>
-    button{
-        background: none;
-        border: none;
-    }
-</style>
-<script>
-    function toggleList(element){
-        console.log('toggleList');
-        
-        const sublist = element.nextElementSibling;
-        console.log(sublist);
 
-        if(sublist.style.display === "none"){
-            sublist.style.display = "block";
+<script>
+    document.querySelectorAll('[html-folder]') //get every element
+    .forEach(folder =>{//get each element
+        folder.onclick = function(e){
+            const nextElement = folder.nextElementSibling;
+            const currentDisplay = nextElement.style.display;
+            nextElement.style.display = (currentDisplay === 'none') ? 'block' : 'none';
         }
-        else{
-            sublist.style.display = "none";
-        }
-    }
+    });
 </script>
