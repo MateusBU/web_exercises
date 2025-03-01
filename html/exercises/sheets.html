@@ -1,0 +1,54 @@
+<h1>Table</h1>
+<table>
+    <caption>Products</caption>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quanti.</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>iPhone</td>
+            <td>2500,10</td>
+            <td>5</td>
+            <td>12500,50</td>
+        </tr>
+        <tr>
+            <td>TV Smart Samsung</td>
+            <td>3400,50</td>
+            <td>2</td>
+            <td>6801,00</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <!-- colspan ocuppies the amout of col. you want -->
+        <!-- rowspan ocuppies the amout of row. you want -->
+        <td colspan="3">Total</td>
+        <td>19301,50</td>
+    </tfoot>
+</table>
+
+<style>
+    table{
+        border-collapse: collapse;
+    }
+    th, td{
+        padding: 10px;
+    }
+    thead tr{
+        border-bottom: solid 3px #444;
+    }
+
+    tbody tr:hover{
+        background-color: #dedede;
+    }
+
+    tfoot{
+        background-color: #444;
+        font-weight: bold;
+        color: white;
+    }
+</style>
