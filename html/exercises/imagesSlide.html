@@ -1,0 +1,154 @@
+
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 5</div>
+        <img src="images/img_lights_wide.jpg" alt="Lights" style="width:80%">
+        <div class="text">Lights</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 5</div>
+        <img src="images/img_mountains_wide.jpg" alt="Mountains" style="width:80%">
+        <div class="text">Mountains</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <img src="images/img_nature_wide.jpg" alt="Nature" style="width:80%">
+        <div class="text">Nature</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <img src="images/img_snow_wide.jpg" alt="Snow" style="width:80%">
+        <div class="text">Snow</div>
+    </div>
+
+    <a class="previousImage" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="nextImage" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<div style="text-align: center;">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+
+<style>
+* {box-sizing:border-box}
+
+    .slideshow-container{
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+
+/* Hide the images by default */
+    .mySlides{
+        display: none;
+    }
+    
+/* Next & previous buttons */
+    .previousImage, .nextImage{
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .nextImage{
+        right: 0px;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .previousImage:hover, .nextImage:hover{
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text{
+        font-size: 15px;
+        padding:8px 12px;
+        position: relative;
+        bottom: 8px;
+        width: 80%;
+        text-align: center;
+    }
+    
+    .numberText{
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    .dot{
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0px 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover{
+        background-color: #2d2d2d;
+    }
+
+    .fade{
+        animation-name: fade;
+        animation-duration: 1s;
+    }
+
+    @keyframes fade{
+        from{opacity: .4}
+        to {opacity:1}
+    }
+</style>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous slide
+    function plusSlides(n){
+        showSlides(slideIndex += n);
+    }
+    function currentSlide(n){
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n){
+        let i = 0;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+
+        if(n > slides.length){
+            slideIndex = 1;
+        }
+        else if(n < 1)
+        {
+            slideIndex = slides.length;
+        }
+        for (let index = 0; index < slides.length; index++) {
+            slides[index].style.display = "none";
+        }
+        
+        for (let index = 0; index < dots.length; index++) {
+            dots[index].className = dots[index].className.replace("active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
