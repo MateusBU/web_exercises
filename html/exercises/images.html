@@ -1,47 +1,54 @@
-<p>
-    <!-- alt used for those who are blind or have a similar "problem"-->
-    <img src="https://images.unsplash.com/photo-1503756234508-e32369269deb?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGhlJTIwc2VhfGVufDB8fDB8fHww" 
-    alt="Sea" 
-    width="300" height="400"
-    title="Sea">
-</p>
+<div wm-slider>
+    <p>
+        <!-- alt used for those who are blind or have a similar "problem"-->
+        <img src="https://images.unsplash.com/photo-1503756234508-e32369269deb?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGhlJTIwc2VhfGVufDB8fDB8fHww" 
+        alt="Sea" 
+        width="300" height="400"
+        title="Sea">
+    </p>
 
-<p>
-    <!-- alt used for those who are blind or have a similar "problem"-->
-    <img src="https://i.pinimg.com/originals/7d/2a/9f/7d2a9fca264faa93561f72b5fc885fec.gif" 
-    alt="gif sunset"
-    title="Sunset">
-</p>
+    <p>
+        <!-- alt used for those who are blind or have a similar "problem"-->
+        <img src="https://i.pinimg.com/originals/7d/2a/9f/7d2a9fca264faa93561f72b5fc885fec.gif" 
+        alt="gif sunset"
+        title="Sunset">
+    </p>
 
-<p class="text">
-    <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" 
-    alt="icon" width="20px" height="20px" >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Ut enim ad minim veniam, quis nostrud 
-    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-</p>
+    <p class="text">
+        <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" 
+        alt="icon" width="20px" height="20px" >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud 
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+    </p>
 
-<p class="city">
-</p>
+    <p class="city">
+    </p>
 
 
-<!-- the first picture (source) is showed if the browser bigger than the min-width. If it's, other img is showed.
- it is possible to create a cascade-->
-<p>
-    <picture>
-        <source srcset="https://p.turbosquid.com/ts-thumb/hG/3C8XsS/LZ/car_generic_sports_car_prod_00/jpg/1663172127/600x600/fit_q87/6cfeb93d3fc9da230a6e5b235a1ac536720abc75/car_generic_sports_car_prod_00.jpg"
-        media="(min-width:700px)">
-        <img src="https://toppng.com/uploads/preview/city-png-11552961336gohtelfgxf.png" alt="Example">
-    </picture>
-</p>
+    <!-- the first picture (source) is showed if the browser bigger than the min-width. If it's, other img is showed.
+    it is possible to create a cascade-->
+    <p>
+        <picture>
+            <source srcset="https://p.turbosquid.com/ts-thumb/hG/3C8XsS/LZ/car_generic_sports_car_prod_00/jpg/1663172127/600x600/fit_q87/6cfeb93d3fc9da230a6e5b235a1ac536720abc75/car_generic_sports_car_prod_00.jpg"
+            media="(min-width:700px)">
+            <img src="https://toppng.com/uploads/preview/city-png-11552961336gohtelfgxf.png" alt="Example">
+        </picture>
+    </p>
 
-<p class="circular">
-    <img src="https://toppng.com/uploads/preview/city-png-11552961336gohtelfgxf.png"
-    alt="City" height="400">
-</p>
+    <p class="circular">
+        <img src="https://toppng.com/uploads/preview/city-png-11552961336gohtelfgxf.png"
+        alt="City" height="400">
+    </p>
+</div>
 
 <style>
+
+    p{
+        position: absolute;
+        display: none;
+    }
     .circular{
         width: 300px;
         background-color: #444;
@@ -65,3 +72,53 @@
         background-size: 200%;
     }
 </style>
+
+<script>
+    function move(elem, start, end, pace, callback){
+        const newStart = start - pace;
+        console.log(newStart);
+        if(newStart >= end){  //verify if the image is in the end
+            elem.style.left = newStart + 'px'; //set new position to the element
+            setTimeout(() => move(elem, newStart, end, pace, callback), 7); //each 7ms, the function is called
+        }
+        else{
+            callback();
+        }
+    }
+
+    // const p = document.querySelector('[wm-slider] > p'); //get the first tag 'p' that it finds 
+    // p.style.display = 'block'; //visible
+    // move(p, 1500, -400, 5, () => {
+    //     console.log('DONE!!!');
+    // })
+
+    function slider(){
+        const elems = document.querySelectorAll('[wm-slider] > p');
+        //transform nodelist in a array
+        const slides = Array.from(elems);
+        showSlides(slides, slides[0]);
+    }
+
+    function showSlides(slides, slide){
+        slide.style.display = 'block'; //current slide visible
+    
+        const start = innerWidth; // page width
+        const end = -slide.clientWidth; //out with the width of slide
+        
+        slide.style.left = `${start}px`;
+
+        move(slide, start, end, 5, () => {
+            slide.style.display = 'none'; //it is not necessary
+            showSlides(slides, getNextSlide(slides, slide));
+        });
+    }
+
+    function getNextSlide(list, currentSlide){
+        const index = list.indexOf(currentSlide);
+        const nextIndex = index + 1;
+        
+        return nextIndex < list.length ? list[nextIndex] : list[0];
+    }
+
+    slider();
+</script>

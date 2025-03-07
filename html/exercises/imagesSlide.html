@@ -1,24 +1,26 @@
 
 <div class="slideshow-container">
     <div class="mySlides fade">
-        <div class="numbertext">1 / 5</div>
-        <img src="images/img_lights_wide.jpg" alt="Lights" style="width:80%">
+        <div class="numbertext">1 / 4</div>
+        <img src="images/img_lights_wide.jpg" alt="Lights" style="width:100%">
         <div class="text">Lights</div>
     </div>
     
     <div class="mySlides fade">
-        <div class="numbertext">2 / 5</div>
-        <img src="images/img_mountains_wide.jpg" alt="Mountains" style="width:80%">
+        <div class="numbertext">2 / 4</div>
+        <img src="images/img_mountains_wide.jpg" alt="Mountains" style="width:100%">
         <div class="text">Mountains</div>
     </div>
     
     <div class="mySlides fade">
-        <img src="images/img_nature_wide.jpg" alt="Nature" style="width:80%">
+        <div class="numbertext">3 / 4</div>
+        <img src="images/img_nature_wide.jpg" alt="Nature" style="width:100%">
         <div class="text">Nature</div>
     </div>
     
     <div class="mySlides fade">
-        <img src="images/img_snow_wide.jpg" alt="Snow" style="width:80%">
+        <div class="numbertext">4 / 4</div>
+        <img src="images/img_snow_wide.jpg" alt="Snow" style="width:100%">
         <div class="text">Snow</div>
     </div>
 
@@ -75,12 +77,14 @@
     }
 
     .text{
-        font-size: 15px;
-        padding:8px 12px;
-        position: relative;
+        font-size: 50px;
+        padding: 8px 12px;
+        position: absolute;
         bottom: 8px;
-        width: 80%;
+        width: 100%;
+        font-weight: bold;
         text-align: center;
+        -webkit-text-stroke: 0.3px rgb(255, 255, 255); /* Espessura e cor do contorno */
     }
     
     .numberText{
@@ -95,7 +99,7 @@
         cursor: pointer;
         height: 15px;
         width: 15px;
-        margin: 0px 2px;
+        margin: 2px 2px;
         background-color: #bbb;
         border-radius: 50%;
         display: inline-block;
