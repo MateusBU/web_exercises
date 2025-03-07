@@ -24,7 +24,7 @@
 
     /* style in the chidl of the .progess */
     .progess > div{
-        background-color: red;
+        background-color: rgb(190, 160, 255);
         color: #fff;
         height: 100%;
         text-align: right;
@@ -58,7 +58,8 @@
         const progessBar = document.querySelector('[wm-progess] > div');
         const percentage = (runtime/duration)*100;
         progessBar.style.width = `${percentage}%`;
-
+        const value = percentage * 2;
+        progessBar.style.backgroundColor = `rgb(${value}, 160, 255)`;
     }
     setInterval(setProgressBar, 100);
 
