@@ -1,0 +1,65 @@
+<h1>Video</h1>
+<!-- controls, it shows (play, stop, sound volume buttons) -->
+<!-- autoplay, when you enter, the video already runs -->
+<video id="myVideo" width="800" height="470" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+</video>
+<!-- which this progess is associated? the video with id myVideo -->
+<div wm-progess="myVideo" class="progess">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="myVideo">Play</button>
+    <button wm-pause="myVideo">Pause</button>
+</div>
+
+<style>
+    .progess{
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    /* style in the chidl of the .progess */
+    .progess > div{
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 30px;
+    }
+</style>
+
+<script>
+    document.querySelector("[wm-pause]").addEventListener("click", function(){
+        const video = document.getElementById("myVideo");
+        video.pause();
+
+        // Callback function triggered after clicking the button
+        console.log("Video paused!"); 
+    });
+
+    document.querySelector("[wm-play]").addEventListener("click", function(){
+        const video = document.getElementById("myVideo");
+        video.play();
+
+        // Callback function triggered after clicking the button
+        console.log("Video is playing!"); 
+    });
+
+    function setProgressBar(){
+        const video = document.getElementById("myVideo");
+        const runtime = video.currentTime;
+        const duration = video.duration;
+
+        const progessBar = document.querySelector('[wm-progess] > div');
+        const percentage = (runtime/duration)*100;
+        progessBar.style.width = `${percentage}%`;
+
+    }
+    setInterval(setProgressBar, 100);
+
+</script>
